@@ -3,6 +3,7 @@ import { createClient } from "@/lib/supabase/server";
 import Reveal from "@/components/reveal";
 import FloatingNav from "@/components/floating-nav";
 import MobileTabBar from "@/components/mobile-tab-bar";
+import ProjectsCarousel from "@/components/projects-carousel";
 
 type Profile = {
   full_name: string; headline: string; bio: string; status: string;
@@ -103,17 +104,15 @@ export default async function Home() {
       <Reveal className="container">
         <div className="section-label">03 SELECTED WORK</div>
         <div className="section-heading-row"><h2>Things I’ve <span className="gradient-text">built.</span></h2><span className="section-aside">{projects.length.toString().padStart(2,"0")} PROJECTS</span></div>
-        {projects.length ? <div className="projects-grid">
-          {projects.map((project, index) => <Reveal key={project.id} delay={index * 90}>
-            <article className="project-card">
-              {project.image_url ? <img src={project.image_url} alt={project.title} className="project-image"/> : <div className="project-placeholder"><span>0{index+1}</span><b>{project.title}</b></div>}
-              <div className="project-content"><div className="project-topline"><span>PROJECT / 0{index+1}</span><MoveUpRight size={17}/></div><h3>{project.title}</h3><p>{project.description}</p>
-                <div className="tech-list">{(project.technologies ?? []).map(t => <span key={t}>{t}</span>)}</div>
-                <div className="project-links">{project.live_url && <a href={project.live_url} target="_blank" rel="noreferrer">Live Website ↗</a>}{project.github_url && <a href={project.github_url} target="_blank" rel="noreferrer">Source code ↗</a>}</div>
-              </div>
-            </article>
-          </Reveal>)}
-        </div> : <div className="empty-projects"><div className="empty-icon">↗</div><h3>Good things are in progress.</h3><p>My selected projects will show up here soon. Stay tuned.</p></div>}
+        {projects.length ? (
+  <ProjectsCarousel projects={projects} />
+) : (
+  <div className="empty-projects">
+    <div className="empty-icon">↗</div>
+    <h3>Good things are in progress.</h3>
+    <p>My selected projects will show up here soon. Stay tuned.</p>
+  </div>
+)}
       </Reveal>
     </section>
 
@@ -134,6 +133,6 @@ export default async function Home() {
         </div>
       </Reveal>
     </section>
-    <footer className="container site-footer"><span>© {new Date().getFullYear()} {profile.full_name}</span><span>Designed & built with intention <b>✳</b></span></footer>
+    <footer className="container site-footer"><span>© {new Date().getFullYear()} {profile.full_name}</span><span>R Studio Web <b>✳</b></span></footer>
   </main>;
 }

@@ -14,7 +14,7 @@ export default async function AdminPage() {
   return <main className="container py-10">
     <header className="flex flex-wrap items-center justify-between gap-4"><div><div className="eyebrow">Portfolio control center</div><h1 className="mt-2 text-4xl font-black">Admin dashboard</h1><p className="mt-2 text-sm text-slate-500">{user.email}</p></div><form action={signOut}><button className="btn btn-outline">Sign out</button></form></header>
     <section className="mt-10 grid gap-8 lg:grid-cols-2">
-      <form action={saveProfile} encType="multipart/form-data" className="card p-6">
+      <form action={saveProfile} className="card p-6">
         <h2 className="text-2xl font-extrabold">Profile settings</h2>
         <div className="mt-5 rounded-xl border border-slate-200 p-4">
   <label className="block text-sm font-bold">
@@ -69,7 +69,7 @@ export default async function AdminPage() {
         <button className="btn btn-primary mt-6 w-full">Save profile</button>
       </form>
       <div className="space-y-8">
-        <form action={addProject} encType="multipart/form-data" className="card p-6">
+        <form action={addProject}>
           <h2 className="text-2xl font-extrabold">Add a project</h2>
           <label className="mt-5 block text-sm font-bold">Project title<input name="title" required className={field}/></label>
           <label className="mt-4 block text-sm font-bold">Description<textarea name="description" rows={3} className={field}/></label>
