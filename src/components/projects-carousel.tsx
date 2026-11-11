@@ -135,7 +135,7 @@ export default function ProjectsCarousel({
           }}
         >
           {projects.map((project, index) => {
-            let offset = index - current;
+            const offset = index - current;
 
             // Pilih jarak terpendek untuk loop visual tidak diperlukan:
             // project di ujung tetap berhenti di batas.

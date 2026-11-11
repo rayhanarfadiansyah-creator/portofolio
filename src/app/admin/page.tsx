@@ -1,6 +1,7 @@
 import { createClient } from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
 import { addProject, deleteProject, saveProfile, signOut } from "./actions";
+import Link from "next/link";
 
 export default async function AdminPage() {
   const supabase = await createClient();
@@ -92,6 +93,10 @@ export default async function AdminPage() {
         </div>
       </div>
     </section>
-    <p className="mt-8 text-center text-sm text-slate-500"><a href="/" className="font-bold text-blue-700">View public portfolio ↗</a></p>
+    <p className="mt-8 text-center text-sm text-slate-500">
+  <Link href="/" className="font-bold text-blue-700">
+    View public portfolio ↗
+  </Link>
+</p>
   </main>;
 }

@@ -1,9 +1,10 @@
-import { ArrowDownRight, ArrowUpRight, Github, Linkedin, Mail, MessageCircle, Sparkles, MoveUpRight } from "lucide-react";
+import { ArrowDownRight, Github, Linkedin, Mail, MessageCircle, Sparkles, MoveUpRight } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import Reveal from "@/components/reveal";
 import FloatingNav from "@/components/floating-nav";
 import MobileTabBar from "@/components/mobile-tab-bar";
 import ProjectsCarousel from "@/components/projects-carousel";
+
 
 type Profile = {
   full_name: string; headline: string; bio: string; status: string;
@@ -56,7 +57,7 @@ export default async function Home() {
 <section className="container hero-section">
       <Reveal className="hero-copy">
         <div className="status-pill"><span className="status-dot" /><Sparkles size={14}/> {statusLabel[profile.status] ?? "Open to opportunities"}</div>
-        <p className="hero-kicker">HELLO, I'M {profile.full_name.toUpperCase()}</p>
+        <p className="hero-kicker">HELLO, I&apos;M {profile.full_name.toUpperCase()}</p>
         <h1>{profile.headline}</h1>
         <p className="hero-description">{profile.bio}</p>
         <div className="hero-actions">
